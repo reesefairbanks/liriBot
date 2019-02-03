@@ -11,20 +11,27 @@
 
 //var movieData = ""
 
+var axios = require("axios");
 const command = process.argv[2];
 const value = process.argv[3];
-const spotify = require('node-spotify-api');
+//const spotify = require('node-spotify-api');
 
-const spotify = new spotify({
-    id:
-    secret:
-});
+if (command === "movie-this") {
+    getMyMovie(value);
+} else if (command ==="concert-this"){
+getMyBands(value);
+}
 
-spotify.search({ type: 'track', query: 'All the Small Things', limits: 10 }, function(err, data) {
-    if (err) {
-        return console.log('Error occured: ' + err)
-    }
-})
+//const spotify = new spotify({
+    //id:
+    //secret:
+//});
+
+// spotify.search({ type: 'track', query: 'All the Small Things', limits: 10 }, function(err, data) {
+//     if (err) {
+//         return console.log('Error occured: ' + err)
+//     }
+// })
 
 //const questions = [
     //{type: 'input', name: 'name', message: 'What is your name?'}
@@ -33,6 +40,20 @@ spotify.search({ type: 'track', query: 'All the Small Things', limits: 10 }, fun
 function getMyBands(artist) {
     const url = '' + artist + ''
 }
-if (command === 'concert-this') {
-    getMyBands(value);
+
+
+function getMyMovie(movieName) {
+    var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+
+    axios.get(queryUrl).then(
+        function(response) {
+            console.log(response);
+            console.log("________________________");
+          console.log("Release Year: " + response.data.Year);
+         
+          console.log("Actors: " + response.data.Actors);
+          
+        }
+      );
 }
+
