@@ -38,8 +38,21 @@ getMyBands(value);
 //];
 
 function getMyBands(artist) {
-    const url = '' + artist + ''
+    const url = "https://rest.bandsintown.com/artists/" + artist + "/events?";
+    
+    axios.get(url, {
+        params: {
+          ID: "codingbootcamp"
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 }
+
 
 
 function getMyMovie(movieName) {
