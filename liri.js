@@ -27,7 +27,6 @@ switch(command) {
     case "movie-this":
         getMyMovie(value);
     default:
-        console.log("Please enter one of the commands \n node.liri.js concert-this-song value \n node liri.js spotify-this-song value")
 }
 
 
