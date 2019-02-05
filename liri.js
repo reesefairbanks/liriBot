@@ -16,13 +16,20 @@ const command = process.argv[2];
 const value = process.argv[3];
 const Spotify = require('node-spotify-api');
 
-if (command === "movie-this") {
-    getMyMovie(value);
-} else if (command ==="concert-this") {
-    getMyBands(value);
-} else if (command === "spotify-this-song") {
-    getMySpotify(value);
+switch(command) {
+    case "concert-this":
+        getMyBands(value);
+        break;
+    
+    case "spotify-this-song":
+        getMySpotify(value);
+        break;
+    case "movie-this":
+        getMyMovie(value);
+    default:
+        console.log("Please enter one of the commands \n node.liri.js concert-this-song value \n node liri.js spotify-this-song value")
 }
+
 
 //Spotify function 
 const spotify = new Spotify({
